@@ -22,13 +22,11 @@ Part-2/
 
 Install Pipeline Requirements
 Install the core data engineering stack:
-```text
-pip install --upgrade pip
-pip install pandas==2.2.1 numpy==1.26.4
-```
 Execution & Output Matrix Generation
 Execute the processing script directly from your terminal workspace:
 ```text
+pip install --upgrade pip
+pip install -r requirements.txt
 python rfm_segmentation.py
 ```
 Automated Outputs & Deliverables
