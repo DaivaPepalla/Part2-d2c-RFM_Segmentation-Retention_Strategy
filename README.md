@@ -17,6 +17,7 @@ Part-2/
 ├── requirements.txt              # Standard package requirements file
 ├── README.md                     # Operation and execution roadmap
 ├── retention_strategy.md         # Strategy allocation framework
+├── rfm_segmentation.ipynb        # Notebook
 └── rfm_segmentation.py           # Core feature extraction script
 
 Install Pipeline Requirements
@@ -28,14 +29,22 @@ pip install pandas==2.2.1 numpy==1.26.4
 Execution & Output Matrix Generation
 Execute the processing script directly from your terminal workspace:
 ```text
-python segment_pipeline.py
+python rfm_segmentation.py
 ```
 Automated Outputs & Deliverables
 Upon successful completion, the script compiles raw relational customer interaction tables into a standardized feature snapshot file:
 
 segments.csv: The master artifact containing engineered metric attributes per unique customer_id. This file is dynamically tracked and pulled upstream by the Part 3 training and Part 4 deployment engines.
 
- Engineered Feature Schema DefinitionsThe resulting dataset tracks five high-priority operational signals crucial for identifying customer risk profiles:Target Metric ColumnBehavioral Signal ClassOperational DefinitionRecencyTransactional SilenceCount of calendar days elapsed since the customer's last successful transaction. Higher gaps flag immediate dormancy risks.FrequencyPlatform LoyaltyCumulative transaction volume completed across the history of the account. High counts denote loyal behavior.Monetary_ValueLifetime Financial WeightCumulative gross spend (₹) mapped to the unique subscriber, used to separate premium value tiers from low-tier accounts.Support_ComplaintsProduct/Service FrictionCount of post-purchase support tickets submitted. High frequencies indicate severe system friction.Web_InteractionsApplication EngagementTotal login and usage density tracked across web and mobile layouts, serving as a vital digital health signal.
+##  Engineered Feature Schema Definitions
+
+| Target Metric Column | Behavioral Signal Class | Operational Definition / Description |
+| :--- | :--- | :--- |
+| **`Recency`** | Transactional Silence | Count of calendar days elapsed since the customer's last successful purchase transaction. Higher gaps flag immediate dormancy risks. |
+| **`Frequency`** | Platform Loyalty | Total cumulative transaction volume completed across the historical lifespan of the account. High counts denote strong engagement. |
+| **`Monetary_Value`** | Lifetime Financial Weight | Cumulative gross financial spend (₹) mapped to the unique subscriber, used to separate high-value premium tiers. |
+| **`Support_Complaints`** | Product/Service Friction | Total count of post-purchase customer help desk tickets opened. High frequencies indicate severe product bottleneck friction. |
+| **`Web_Interactions`** | Application Engagement | Cumulative login and usage density tracked across web/mobile layouts, serving as a vital digital interaction footprint. |
 
  Downstream Continuity
 The engineered segments.csv file produced in this module serves as the direct data foundation for:
